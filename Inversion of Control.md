@@ -18,7 +18,7 @@ Tags:
 
 Il controllo rovesciato spesso viene realizzato tramite un meccanismo detto dependency injection.
 
-> [!abstract] DI
+> [!abstract] Dependency Injection
 > Il componente che vuole usare determinati servizi lo dichiara, ad esempio specificandoli come parametri formali del proprio costruttore. Poiché è il framework a costruire il componente, nel momento in cui lo fa il framework gli passa le istanze dei servizi che ritiene appropriate e che ha già creato in precedenza. Questo meccanismo è appunto la «iniezione delle dipendenze». Esso permette un **minore accoppiamento fra l’utilizzatore e il fornitore di un servizio.**
 # References
 

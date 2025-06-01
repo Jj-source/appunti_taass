@@ -5,17 +5,17 @@ Status: #baby
 Tags: [[Xtreme Programming (XP)]] [[Unified Process UP]]
 # Programmazione Agile
 
-- Focusing on short term less likely to make wrong Irreversible decisions
-- Specifying written rules, behaviours, & policies for maintaining alignment of activities
-- Flexible and adaptive to different situations
-- Boundaries between plans and processes blur plans are enacted via practices which are part of development process
-- Agile planning is not for projects with long term perspectives
-- Focusing on short-term issues could lead to suboptimal decisions made
-  
-Agile planning deals with more complex single issues than traditional planning However, agile planning has less issues to handle
-In general, agile planning requires less effort
+> [!success]
+> - Focusing on short term less likely to make wrong Irreversible decisions.
+> - Specifying written rules, behaviours, & policies for maintaining alignment of activities
+> - Flexible and adaptive to different situations
+
+> [!fail]
+> - Agile planning is not for projects with long term perspectives
+> - Focusing on short-term issues could lead to suboptimal decisions made
+
 #### Stand-up meeting
-- Everyone stands -> avoiding lengthy discussions
+- Everyone stands -> *avoiding lengthy discussions*
 - Coordination among developers
 - Setting a stage to discuss hard problems
 - Organizing the daily development
@@ -34,7 +34,7 @@ In general, agile planning requires less effort
 Verifying a Software Requirements Specification (SRS) is important:
 - SRS guides the rest of software development
 - SRS can act as a contract between customers and developers
-Projects with a lot of changes
+But in projects with a lot of changes
 - Costly to produce a verifiable SRS
 - Agile requirements elicitation is a wiser choice
 

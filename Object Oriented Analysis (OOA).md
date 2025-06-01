@@ -5,8 +5,7 @@ Status: #baby
 Tags: [[Project & People Management]] [[GRASP patterns]] [[GOF patterns]]
 # Object Oriented Analysis (OOA)
 
-Object Oriented
-Scopo: modularità e info hiding.
+**Scopo: modularità e info hiding**.
 Invece di affrontare il problema con flow diagrams, la OO analysis usa ‘use cases’ e ‘user stories’ 
 #### OOA model
 - Set of key classes with detailed information about their data structure and operations
