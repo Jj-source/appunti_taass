@@ -25,7 +25,8 @@ Kanban è un metodo di gestione del lavoro che aiuta a visualizzare il flusso de
 ✅ Flessibilità: adatto a progetti in continuo cambiamento  
 ✅ Miglior gestione del carico di lavoro
 
-Kanban è spesso confrontato con Scrum, ma a differenza di Scrum non impone iterazioni fisse (Sprint) e ruoli definiti, rendendolo più adatto a contesti con esigenze di cambiamento continuo.
+> [!question] Kanban vs Scrum
+> Kanban non impone iterazioni fisse (Sprint) e ruoli definiti, rendendolo più adatto a contesti con esigenze di cambiamento continuo.
 
 ![[kanban2.png]]
 
