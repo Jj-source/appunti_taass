@@ -4,7 +4,7 @@ Status: #baby
 
 Tags:
 # Docker & Container
-#### *Lezione Picardi*
+#### *Gestione di architetture a micro-servizi*
 Un'architettura a microservizi è composta da mini-applicativi indipendenti, ciascuno svolgendo compiti specifici. Sebbene offra vantaggi come l'aggiornamento indipendente dei moduli e un basso accoppiamento (lo coupled), la difficoltà si sposta dalla gestione interna dell'applicazione alla gestione a livello di middleware.
 
 Storicamente, una prima idea per gestire più applicazioni (come quelle di un'architettura a microservizi) era quella di dedicare un server per ogni applicazione. Questo approccio presenta diversi problemi:
@@ -30,9 +30,9 @@ Il container **contiene al suo interno tutto ciò che serve all'applicazione per
 
 Dal punto di vista concettuale, i container possono essere visti come una **virtualizzazione molto leggera** del sistema operativo. Appaiono come mini virtual machine separate, ma a basso livello non c'è una vera virtualizzazione completa; il sistema operativo è semplicemente "tagliato a fette".
 
-Uno dei concetti chiave di Docker è l'**immagine (image)**. 
+Uno dei concetti chiave di Docker è l'**immagine**. 
 
-> [!definizione] Immagine
+> [!definizioneviola] Immagine
 > *pacchetto* che racchiude l'applicazione e tutto ciò che serve per eseguirla all'interno di un container.
 > Contiene l'applicazione, le dipendenze, e la configurazione della "fetta" di sistema operativo.
 > 
@@ -41,8 +41,8 @@ Una volta creata un'immagine, essa può essere **distribuita** tramite **registr
 
 La portabilità delle immagini è quasi totale, ma con alcune **piccole complicazioni**:
 
-1. Il **processore**: se l'immagine contiene codice macchina compilato, deve essere compilata per l'architettura di destinazione (Intel/AMD o ARM). Le immagini più comuni su Docker Hub spesso hanno versioni per entrambe le architetture.
-2. Il **sistema operativo**: un'applicazione pensata per girare su Linux richiede una fetta di Linux, mentre una pensata per Windows richiede una fetta di Windows. Un'immagine basata su Windows può girare solo su Windows. Per questo motivo, le immagini basate su Linux sono più diffuse, poiché possono essere eseguite su quasi tutte le piattaforme.
+1. Il *processore*: se l'immagine contiene codice macchina compilato, deve essere compilata per l'architettura di destinazione (Intel/AMD o ARM). Le immagini più comuni su Docker Hub spesso hanno versioni per entrambe le architetture.
+2. Il *sistema operativo*: un'applicazione pensata per girare su Linux richiede una fetta di Linux, mentre una pensata per Windows richiede una fetta di Windows. Un'immagine basata su Windows può girare solo su Windows. Per questo motivo, le immagini basate su Linux sono più diffuse, poiché possono essere eseguite su quasi tutte le piattaforme.
 
 Per "containerizzare" un'applicazione, si deve scrivere un **Dockerfile**. Questo file specifica come costruire l'immagine. Le istruzioni chiave di un Dockerfile includono:
 
@@ -53,31 +53,31 @@ Per "containerizzare" un'applicazione, si deve scrivere un **Dockerfile**. Quest
 
 Una volta scritto il Dockerfile, si usa un comando per **costruire l'immagine**. L'immagine creata viene salvata in un **repository**, che può essere locale sulla macchina o remoto su Docker Hub.
 
-**Eseguire un'immagine Docker crea un container**. L'immagine è statica, mentre il container è un **processo attivo** in esecuzione. Dalla stessa immagine, si possono creare **quante istanze di container si desidera**. Quando si esegue un container, è possibile configurare il **port mapping**, ovvero mappare una porta interna del container (quella su cui l'applicazione è in ascolto) a una porta del sistema operativo ospite, per renderla accessibile dall'esterno. All'interno di un container, è possibile accedere a una **shell** per esplorare il file system della "fetta" di sistema operativo e verificare i file copiati, come il file JAR dell'applicazione.
+**Eseguire un'immagine Docker crea un container**. *L'immagine è statica, mentre il container è un processo attivo* in esecuzione. Dalla stessa immagine, si possono creare **quante istanze di container si desidera**. Quando si esegue un container, è possibile configurare il **port mapping**, ovvero mappare una porta interna del container (quella su cui l'applicazione è in ascolto) a una porta del sistema operativo ospite, per renderla accessibile dall'esterno. All'interno di un container, è possibile accedere a una **shell** per esplorare il file system della "fetta" di sistema operativo e verificare i file copiati, come il file JAR dell'applicazione.
 
-> [!abstract]
-> Concettualmente, i container sono come **mini sistemi operativi** isolati che girano all'interno del sistema operativo ospite. Ognuno ha le proprie risorse (processi, memoria, disco, porte) isolate. L'isolamento intrinseco dei container è un vantaggio per la **sicurezza**, in quanto non sono accessibili dall'esterno a meno che non si espongano volontariamente porte e funzionalità specifiche.
+> [!abstract] container → mini OS
+> Concettualmente, *i container sono come mini sistemi operativi isolati* che girano all'interno del sistema operativo ospite. Ognuno ha le proprie risorse (processi, memoria, disco, porte) isolate. L'isolamento intrinseco dei container è un vantaggio per la **sicurezza**, in quanto non sono accessibili dall'esterno a meno che non si espongano volontariamente porte e funzionalità specifiche.
 
 Comandi Chiave del Dockerfile Le fonti descrivono alcuni comandi fondamentali:
 
-- FROM \[nome_immagine : tag_immagine]: Specifica l'*immagine di base da cui viene costruita la nostra immagine*. → l'applicativo potrebbe richiedere qualcosa di preesistente, come una Java Virtual Machine per un'applicazione Java.
+- `FROM [nome_immagine : tag_immagine]`: Specifica l'*immagine di base da cui viene costruita la nostra immagine*. → l'applicativo potrebbe richiedere qualcosa di preesistente, come una Java Virtual Machine per un'applicazione Java.
   
-  Ad esempio, amazoncorretto: 23-alpine indica la distribuzione Amazon Corretto del JDK versione 23, basata sulla distribuzione Alpine di Linux.
+  Ad esempio, `amazoncorretto: 23-alpine` indica la distribuzione Amazon Corretto del JDK versione 23, basata sulla distribuzione Alpine di Linux.
   
   La scelta dell'immagine di base è importante e deve essere compatibile con l'applicazione e l'host (es. un'immagine basata su Windows non gira su un Mac, che usa una VM Linux per Docker).... Le immagini basate su Linux sono comuni perché Windows può eseguire processi Linux grazie a un kernel Linux interno, mentre il viceversa non è vero, e Linux è spesso la base per application server in ambito business.
   
-- ARG \[nome_variabile]: Dichiara una variabile utilizzata all'interno del Dockerfile, non è un vero comando eseguito nel container. Nell'esempio dato, definisce JAR_file per riferirsi al file .jar generato dalla build.
+- `ARG [nome_variabile]`: Dichiara una variabile utilizzata all'interno del Dockerfile, non è un vero comando eseguito nel container. Nell'esempio dato, definisce JAR_file per riferirsi al file .jar generato dalla build.
   
-- COPY \[origine] \[destinazione]: Copia file o cartelle dall'ambiente locale (dove si esegue il build) nel file system locale dell'immagine. Nell'esempio, copia il file .jar compilato nella cartella target del progetto nel file system interno dell'immagine con il nome app.jar.
+- `COPY [origine] [destinazione]`: Copia file o cartelle dall'ambiente locale (dove si esegue il build) nel file system locale dell'immagine. Nell'esempio, copia il file .jar compilato nella cartella target del progetto nel file system interno dell'immagine con il nome app.jar.
   
-- EXPOSE \[porta]: Espone una porta interna del container, *rende la porta "esponibile", ma non la rende ancora accessibile dall'host*. Questo è un passaggio intermedio. È necessario esporre la porta su cui il servizio è in esecuzione.... *Se una porta non è esposta, possono vederla solo altri servizi all'interno dello stesso container*.
+- `EXPOSE [porta]`: Espone una porta interna del container, *rende la porta "esponibile", ma non la rende ancora accessibile dall'host*. Questo è un passaggio intermedio. È necessario esporre la porta su cui il servizio è in esecuzione.... *Se una porta non è esposta, possono vederla solo altri servizi all'interno dello stesso container*.
   
-- ENTRYPOINT \["comando", "param1", "param2"]: Definisce il comando che deve essere lanciato per far partire l'applicazione quando il container viene eseguito.  Nell'esempio, \["java", "-jar", "/app.jar"] equivale a eseguire java -jar /app.jar8.
+- `ENTRYPOINT ["comando", "param1", "param2"]`: Definisce il comando che deve essere lanciato per far partire l'applicazione quando il container viene eseguito.  Nell'esempio, `["java", "-jar", "/app.jar"]` equivale a eseguire `java -jar /app.jar8`.
 
-> [!todo] Docker build -t \[nome: tag] “path_immagine”
+> [!todo] `Docker build -t [nome: tag] “path_immagine”`
 > Il nome dell'immagine appare dentro Docker. Se si intende pubblicare l'immagine su Docker Hub (il registro pubblico), è buona norma che il nome inizi con il nome del proprio repository su Docker Hub. Il tag serve a distinguere le diverse versioni dell'immagine.
 
-> [!todo]  docker run
+> [!todo]  `docker run`
 > Per eseguire un'immagine e creare un container. Durante l'esecuzione, si possono definire diverse opzioni:
 
 Mappatura delle porte: passaggio successivo a EXPOSE.
@@ -96,7 +96,8 @@ Exec: Apre una shell all'interno del container. Permette di interagire con il mi
 > - Namespaces: Permettono di partizionare vari aspetti del sistema operativo, rendendoli visibili solo all'interno del namespace specifico. Esempi di aspetti partizionati: tabella dei processi, stack di rete, memoria, volumi del file system, comunicazione interprocesso (porte, MAC address, DNS), e utenti. Creando namespace, si dividono le risorse del sistema operativo.
 > - Control Groups (cgroups): Permettono di limitare la quantità di risorse (CPU, RAM, disco, banda di rete) utilizzata da un certo namespace. In pratica, un container Docker è un insieme di queste due cose: un namespace con un utilizzo controllato delle risorse. Docker ha reso queste funzionalità, prima considerate complicate da usare, facilmente accessibili e impacchettate.
 
-Registri (Registry) Docker Quando si crea un'immagine, viene salvata in un registro locale privato sul proprio computer. Per condividere le immagini, si usano i registri Docker pubblici come Docker Hub o registri privati (usati tipicamente dalle aziende per le proprie immagini). 
+##### *Registri (Registry)*
+Docker Quando si crea un'immagine, viene salvata in un registro locale privato sul proprio computer. Per condividere le immagini, si usano i registri Docker pubblici come Docker Hub o registri privati (usati tipicamente dalle aziende per le proprie immagini). 
 
 ```mermaid
 graph TD
@@ -106,15 +107,15 @@ graph TD
 	C["opzionale: push su registry"] --> D
 	D["Docker run"]
 ```
-##### Architettura di Docker
+##### *Architettura di Docker*
 ![[Docker_arc.png]]
 
-Docker ha un'architettura client-server. Il client è l'interfaccia utente grafica (Docker Desktop) o la linea di comando (CLI). Il server (o Docker host) viene interpellato dal client tramite una API Rest. Il server contiene il Docker Daemon, che attende ed esegue i comandi. In fase di sviluppo locale, client e server spesso si trovano sullo stesso computer, ma in installazioni aziendali il server può essere remoto.
+*Docker ha un'architettura client-server*. Il client è l'interfaccia utente grafica (Docker Desktop) o la linea di comando (CLI). Il server (o Docker host) viene interpellato dal client tramite una API Rest. *Il server contiene il Docker Daemon, che attende ed esegue i comandi*. In fase di sviluppo locale, client e server spesso si trovano sullo stesso computer, ma in installazioni aziendali il server può essere remoto.
 
 > [!caution] evitare di eseguire l'applicazione come utente root all'interno del container
 > Teoricamente, un utente root all'interno del container potrebbe sfruttare primitive del sistema operativo per uscire ("escape") dal container, specialmente perché non è una macchina virtuale completa ma condivide il kernel dell'host. Per mitigare questo rischio, si possono aggiungere istruzioni al Dockerfile per creare un nuovo gruppo e utente non-root e impostare quell'utente come utente corrente per le operazioni successive
 > In questo modo, l'applicazione viene eseguita con privilegi limitati (quelli dell'utente creato, es. "spring"), rendendo più difficile per un potenziale malintenzionato compiere azioni pericolose o uscire dal container....
-#### Immagini e Strati (Layers)
+#### *Immagini e Strati (Layers)*
 Un'immagine Docker è costruita come una serie di **strati** (o _layers_) uniti a un file **manifest** che indica a Docker come gli strati devono essere "impilati".
 
 Generalmente, ogni riga significativa nel Dockerfile corrisponde a un nuovo strato, che rappresenta una serie di modifiche rispetto allo strato precedente.
@@ -164,7 +165,7 @@ EXPOSE 8555
 *! Maven clean dopo le pull da git*
 
 Questa strategia è particolarmente utile in *architetture a microservizi* dove molti servizi potrebbero usare lo stesso set di librerie (come Spring Boot).
-##### *E se un’applicazione deve scrivere dei dati?*
+##### E se un’applicazione deve scrivere dei dati?
 Ad ogni strato read-only, Docker sovrappone un *writable layer*, tramite un meccanismo chiamato **Copy on Write (CoW)**, *specifico per quel singolo container*.
 
 ![[Docker_cow.png]]
@@ -174,9 +175,10 @@ Qualsiasi modifica fatta all'interno del container (come la creazione o la modif
 Questo permette a **due container diversi** eseguiti dalla stessa immagine di avere stati differenti, perché ognuno ha il proprio strato scrivibile separato.
 
 È possibile visualizzare quali file sono stati modificati o aggiunti sullo strato scrivibile ispezionando i file del container in Docker Desktop.
-#### *Persistenza dei Dati: Copy on Write vs. Volumi*
-Le modifiche scritte sullo strato Copy on Write **persistono** se il container viene fermato e poi fatto ripartire (stop and play). L'applicazione riprende da dove l'aveva lasciata, e il file di log (usato come esempio) rimane. Tuttavia, se il container viene *rimosso e rieseguito* da zero (anche dalla stessa immagine), lo strato Copy on Write viene *eliminato* e ricreato vuoto. Pertanto,
-###### i dati scritti solo sullo strato CoW non persistono oltre la vita del container → VOLUMI
+#### Persistenza dei Dati: Copy on Write vs. Volumi
+*Le modifiche scritte sullo strato Copy on Write **persistono** se il container viene fermato e poi fatto ripartire* (stop and play). L'applicazione riprende da dove l'aveva lasciata, e il file di log (usato come esempio) rimane. Tuttavia, *se il container viene rimosso e rieseguito da zero* (anche dalla stessa immagine), *lo strato Copy on Write viene **eliminato e ricreato vuoto***. Pertanto,
+###### *i dati scritti solo sullo strato CoW non persistono oltre la vita del container*
+#### VOLUMI
 Un volume Docker è essenzialmente una *cartella sul file system dell'host* (la macchina su cui gira Docker) che viene *montata* all'interno del file system del container.
 - Il contenuto del volume è gestito dall'host e *non è sotto il controllo diretto di Docker*. Docker si limita a "montare" quella cartella nel container.
 - Quando un container viene rimosso, il volume *non viene cancellato.
@@ -195,7 +197,7 @@ La slice di OS dei container ha anche la parte di rete: Ogni container ha una su
 
 I container sullo stesso host sono connessi a una rete chiamata `bridge`. In questa rete di default, i container hanno indirizzi IP, ma la comunicazione diretta per nome non è agevole. 
 
-> [!todo]
+> [!importante]
 > Per far comunicare i container **tra di loro** in modo efficiente (specialmente in architetture a microservizi), è preferibile creare una **rete Docker custom**.
 
 Il tipo di rete più comune per connettere container *sulla stessa macchina* è la **bridge network**.
@@ -205,7 +207,7 @@ Il tipo di rete più comune per connettere container *sulla stessa macchina* è 
 > Una rete bridge custom si crea con `docker network create --driver bridge <nome_rete>`. I container vengono eseguiti o collegati a questa rete specificandola (es. con `--network <nome_rete>` in `docker run`). Questa funzionalità non è sempre disponibile nell'interfaccia grafica e potrebbe richiedere la linea di comando.
 > È possibile aggiungere o rimuovere container da una rete esistente usando `docker network connect` e `docker network disconnect`.
 
-Se il container prova a collegarsi ad uno host nel mondo, la richiesta viene girata all’OS dell’host del container che la fa “a nome suo”. La richiesta apparirà come fatta dall’host. L’unico domain non mappato è il localhost, che ogni container ha in se stesso.
+*Se il container prova a collegarsi ad uno host nel mondo, la richiesta viene girata all’OS dell’host del container che la fa “a nome suo”*. La richiesta apparirà come fatta dall’host. L’unico domain non mappato è il localhost, che ogni container ha in se stesso.
 
 > [!seealso] 
 Per far comunicare container **su macchine host diverse** (in un'installazione distribuita), si usano le **overlay network** (il container che la crea ne è l’owner e poi gli altri si aggiungono, diventa come una rete privata). Queste richiedono l'attivazione della **modalità Swarm** di Docker (un concorrente di Kubernetes).
@@ -263,7 +265,7 @@ servicies:
 > prima della sua diffusione, ogni piattaforma cloud (AWS, Azure, ecc.) aveva il proprio sistema di container, rendendo il deployment specifico per ogni piattaforma e complesso da insegnare
 
 > [!abstract]
-> - docker logs <nome_container>: vedere logs
-> - docker compose down -v: ferma e rimuove containers + rete + -v per i volumi
+> - `docker logs <nome_container>`: vedere logs
+> - `docker compose down -v`: ferma e rimuove containers + rete + -v per i volumi
 
 # References
