@@ -1,6 +1,6 @@
 2025-05-20 12:10
 
-Status: #baby 
+Status: #child
 
 Tags: [[microservizi]]
 # Kubernetes

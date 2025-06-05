@@ -1,6 +1,6 @@
 2025-05-20 11:15
 
-Status: #baby 
+Status: #child
 
 Tags: [[microservizi]]
 # RabbitMQ
