@@ -6,7 +6,7 @@ Tags: [[Università]] [[Object Oriented Analysis (OOA)]]
 [[SAS]]
 # Project & People Management
 
-# Gestione di un progetto
+## Gestione di un progetto
 
 - difficoltà nel comprendere le tempistiche
 - troppi livelli gerarchici
@@ -21,7 +21,7 @@ Punti chiave
 - tempistiche
 - vincoli di precedenza
   Così diventa possibile stimare il tempo e le risorse necessarie al progetto.
-1. controllare
+4. controllare
 
 Nell'approccio tradizionale / monolotico l'esecuzione di un progetto è un momento completamente separato dalla pianificazione.
 # Xtreme Programming
@@ -29,9 +29,11 @@ Nell'approccio tradizionale / monolotico l'esecuzione di un progetto è un momen
 Molto importante la fiducia tra i membri del gruppo.
 (come? premiare i meritevoli, celebrare i successi, suddividere correttamente le responsabilità).
 
+[[Xtreme Programming (XP)]]
+
 # Unified Process UP
 
-![[Unified Process UP#Unified Process UP]]
+[[Unified Process UP#Unified Process UP]]
 # People Management
 *Project Manager*
 Attua funzione di monitoraggio, controlla che tutto vada come il gruppo ha deciso.
@@ -97,17 +99,13 @@ Due approcci:
 - Top-Down: si parte dal macro per dividere in singoli compiti
 - Bottom-up: si parte dai singoli compiti atomici e li si accorpa in task più grossi
   
-! non fare micromanaging, non task troppo piccoli, il livello di dettaglio dev'essere coerente con la qualità di pianificazione e controllo desiderata
+**! non fare micromanaging**, non task troppo piccoli, il livello di dettaglio dev'essere coerente con la qualità di pianificazione e controllo desiderata
 
 ! includere stesura di rapporti, review, attività di coordinazione
-#### Milestones
-Sono i punti in cui c'è qualche consegna, per un cliente (esterna) o tra sviluppatori (interna) per controllare come procede il lavoro (come momento di confluenza)
 
-per noi: le due project review e la consegna
-
-da inserire all'inizio ed alla fine di una serie di task
-
-aggiungine per gli eventi fuori dal controllo degli sviluppatori
+> [!abstract] Milestones
+> Sono i punti in cui c'è qualche consegna, per un cliente (esterna) o tra sviluppatori (interna) per controllare come procede il lavoro (come momento di confluenza) e sono da inserire *all'inizio ed alla fine di una serie di task*
+> per noi: le due project review e la consegna
 ## Strumenti
 ### GANTT chart
 ![](https://www.productplan.com/uploads/2019/11/Gantt-chart.png)
@@ -124,7 +122,7 @@ cammini critici: sequenza delle attività che vincolano il progetto (se ritarda 
 > [!info] Software
 trello +gantt chart + calendar,timeline,time tracking
 jetbrains + YouTrak
-## 3 major problems
+### 3 major problems
 - incertezza: sia di ciò che vuole il committente che può cambiare idea nel tempo, che delle tecnlogie che in fretta possono diventare obsolete
 - irreversibility: Consuming less resource by not committing early, Requirements could be economically reversible
 - Complexity: Dealing with one requirement at a time, Keeping the project under control
@@ -141,7 +139,7 @@ Ripete le fasi espandendosi.
 Avere più release permette di notare prima i problemi.
 ### Xtreme Programming (XP)
   
-![[Xtreme Programming (XP)#Xtreme Programming (XP)]]
+[[Xtreme Programming (XP)#Xtreme Programming (XP)]]
 ### Gestione iterativa
 ![[iterative.png]]
 ![[iterative.pdf]]

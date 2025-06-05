@@ -5,9 +5,9 @@ Status: #baby
 Tags: [[microservizi]]
 # RabbitMQ
 
-RabbitMQ è un message broker basato sul protocollo di messaggistica AMQP (Advanced Message Queuing Protocol)
+RabbitMQ è un **message broker** basato sul protocollo di messaggistica AMQP (Advanced Message Queuing Protocol)
 
-è considerato un servizio di middleware installato su un host o
+*è considerato un servizio di middleware* installato su un host o
 , in un'architettura a microservizi, è comune ospitarlo tramite un apposito Docker container.
 
 `rabbitmq:4.1.0-management-alpine`, dove il tag -management indica che include l'utility di gestione web.
@@ -31,9 +31,9 @@ RabbitMQ espone diverse porte per la comunicazione con vari protocolli, ma ci co
 *Routing Key*: Una stringa arbitraria specificata dal producer quando invia un messaggio a un exchange. Dà un'idea di "dove va il messaggio" ed è lo strumento per creare il matching tra producer e consumer.
 *Binding Key*: Una stringa usata per collegare una coda a un exchange
 
-Quando un producer invia un messaggio con una routing key, l'exchange lo invia solo alle code il cui binding key corrisponde alla routing key
+Quando un producer invia un messaggio con una routing key, *l'exchange lo invia solo alle code il cui binding key corrisponde alla routing key*
 
-I messaggi entrano nella coda e vengono gestiti in modo first in, first out (FIFO). Quando un consumer preleva un messaggio, dovrebbe inviare un acknowledgement (ACK) alla coda. Una volta ricevuto l'ACK, la coda elimina il messaggio considerandolo consumato con successo.
+I messaggi entrano nella coda e vengono gestiti in modo first in, first out (FIFO). *Quando un consumer preleva un messaggio, dovrebbe inviare un acknowledgement (ACK) alla coda*. Una volta *ricevuto l'ACK, la coda elimina il messaggio* considerandolo consumato con successo.
 
 > [!info] NACK
 > È possibile anche inviare un negative acknowledgement (NACK) in caso di errore durante l'elaborazione del messaggio: si può chiedere a RabbitMQ di ritentare (eventualmente indirizzando il messaggio ad un'altra istanza del servizio) o di metterlo in una dead letter queue
@@ -41,7 +41,7 @@ I messaggi entrano nella coda e vengono gestiti in modo first in, first out (FIF
 > [!importante]
 > Con il sistema di routing key e binding key, RabbitMQ può implementare **sia il point-to-point messaging che il publish and subscribe**. La scelta dipende dalla configurazione: *se una routing key è associata a una sola coda con un solo consumer, si ha point-to-point; se è associata a tante code con tanti binding diversi, si ha publish/subscribe*.
 
-È possibile che più producer scrivano sullo stesso exchange e che più consumer leggano dalla stessa coda. *Se più consumer leggono dalla stessa coda, agiscono come competing consumers* (che riucordiamo è scalabilità, permettendo a più istanze dello stesso servizio di gestire più richieste contemporaneamente)
+È possibile che più producer scrivano sullo stesso exchange e che più consumer leggano dalla stessa coda. *Se più consumer leggono dalla stessa coda, agiscono come competing consumers* (che ricordiamo è scalabilità, permettendo a più istanze dello stesso servizio di gestire più richieste contemporaneamente)
 
 > [!question] Round Robin e prefetch count
 > RabbitMQ distribuisce i messaggi tra i competing consumers usando tendenzialmente il round robin: Se un consumer ha richieste "aperte" (non ancora confermate con ACK), RabbitMQ lo salta. il parametro prefetch count, che un consumer può configurare per sé stesso, indica quante richieste "aperte" può gestire prima di essere saltato nel round robin
