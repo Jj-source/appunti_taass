@@ -15,13 +15,13 @@ Tags: [[Università]] [[Object Oriented Analysis (OOA)]]
 - mancanza funzione di controllo: verificare procedimento corretto ed avere piano B.
 
 Punti chiave
-1. definire
-2. pianificare: sapere quali sono i passaggi chiave e quali sono le dipendenze tra essi. Individuare i task (e sottotask) che compongono il progetto.
-3. schedulare: prese le attività del punto 2 si assegnano
-- tempistiche
-- vincoli di precedenza
-  Così diventa possibile stimare il tempo e le risorse necessarie al progetto.
-4. controllare
+1. **definire**
+2. **pianificare**: sapere quali sono i passaggi chiave e quali sono le dipendenze tra essi. Individuare i task (e sottotask) che compongono il progetto.
+3. **schedulare**: prese le attività del punto 2 si assegnano
+	- tempistiche
+	- vincoli di precedenza
+	  Così diventa possibile stimare il tempo e le risorse necessarie al progetto.
+4. **controllare**
 
 Nell'approccio tradizionale / monolotico l'esecuzione di un progetto è un momento completamente separato dalla pianificazione.
 # Xtreme Programming
@@ -123,9 +123,9 @@ cammini critici: sequenza delle attività che vincolano il progetto (se ritarda 
 trello +gantt chart + calendar,timeline,time tracking
 jetbrains + YouTrak
 ### 3 major problems
-- incertezza: sia di ciò che vuole il committente che può cambiare idea nel tempo, che delle tecnlogie che in fretta possono diventare obsolete
-- irreversibility: Consuming less resource by not committing early, Requirements could be economically reversible
-- Complexity: Dealing with one requirement at a time, Keeping the project under control
+- **incertezza**: sia di ciò che vuole il committente che può cambiare idea nel tempo, che delle tecnlogie che in fretta possono diventare obsolete
+- **irreversibility**: Consuming less resource by not committing early, Requirements could be economically reversible
+- **Complexity**: Dealing with one requirement at a time, Keeping the project under control
 ## Evoluzione del software engineering
 L'iteratività permette di intercettare i nuovi requisiti (funzionali (dei clienti) e tecnologici) ed inglobarli nel progetto.
 ### Cascata

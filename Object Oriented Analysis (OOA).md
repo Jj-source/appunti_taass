@@ -14,10 +14,10 @@ Invece di affrontare il problema con flow diagrams, la OO analysis usa ‘use ca
 - Must be totally independent from user interface and database
 - UML Class Diagram: OOA model
 #### Come identifichi oggetti e classi?
-- We look at the use cases / user stories
-	- We extract the nouns and the verbs
-	- Nouns help identifying objects
-	- Verbs help identifying methods
+- *We look at the use cases / user stories*
+	- *We extract the nouns and the verbs*
+	- *Nouns help identifying objects*
+	- *Verbs help identifying methods*
 - We pose particular attention at:
 	- Avoiding using the same term for different entities
 	- Avoiding to use different terms for the same entity

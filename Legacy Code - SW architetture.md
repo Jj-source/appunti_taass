@@ -24,7 +24,7 @@ Tre principali problematiche legate all'integrazione di applicazioni enterprise:
 - Composite applications: integrare applicativi separati in un'unica applicazione per fornire un front-end unificato.
   Se implementato male, l'utente si troverà semplicemente di fronte a una serie di pulsanti che lo reindirizzano a diverse applicazioni separate, come spesso accade con alcune applicazioni dell'ateneo (biblioteche, pubblicazioni scientifiche)
 
-Prima ogni dipendente aveva installato i programmi, se volevi usare un programma forse dovevi pure andare dal terminale giusto.
+Prima ogni dipendente aveva installato i programmi, *se volevi usare un programma forse dovevi pure andare dal terminale giusto*.
 L’architettura client / server risolve questo problema anche.
 Si parla di applicativi basati sui dati, non che fanno calcoli o altro.
 
@@ -33,7 +33,7 @@ L'avvento del modello client-server ha rappresentato un punto di partenza per le
 - ***Business logic**: la gestione della logica dei dati, la loro consistenza, validazione ed elaborazione*....
 - ***Data management**: la gestione della persistenza e della consistenza dei dati*
 
-La suddivisione tra frontend e backend è una distinzione logica basata sul ruolo di un modulo applicativo: orientato all'utente (frontend) o alla gestione dei dati (backend), lo strato di business logic si colloca a metà, con servizi che possono essere più vicini al frontend o al backend a seconda della loro funzione
+*La suddivisione tra frontend e backend è una distinzione logica basata sul ruolo di un modulo applicativo: orientato all'utente (frontend) o alla gestione dei dati (backend)*, lo strato di business logic si colloca a metà, con servizi che possono essere più vicini al frontend o al backend a seconda della loro funzione
 #### Come si distribuiscono i 3 strati in architetture client-server?
 - Si parte da modelli arcaici dove tutto risiedeva sul server e i client erano semplici terminali senza capacità di elaborazione (come i laboratori Unix con terminali collegati a un mainframe)
 - L'evoluzione ha portato a client con una limitata capacità di elaborazione per la gestione dell'interfaccia grafica (come gli X terminal)

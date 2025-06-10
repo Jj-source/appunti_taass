@@ -33,8 +33,8 @@ Componenti di JEE:
 > - Controllo rovesciato: il framework crea un’istanza di Y e la «inietta» a tutti coloro che la richiedono, fra cui X
 > - Dependency injection: X «chiede» un oggetto Y nel suo costruttore, il framework glielo passa
 
-- *Servlet*: Sono oggetti Java che rimangono in attesa di richieste HTTP e possono utilizzare gli EJB per elaborare le risposte
-- *Java Server Pages* (JSP): Sono una tecnologia per la creazione di pagine web dinamiche lato server, integrandosi con gli EJB per visualizzare i dati elaborati
+- *Servlet*: oggetti i cui metodi ricevono richieste HTTP, elaborano la risorsa richiesta, e la inviano in risposta
+- *Java Server Pages* (JSP): pagine scritte in un linguaggio che intreccia HTML e frammenti di codice Java. A ciascuna di queste pagine Jakarta abbina una propria Servlet che, alla ricezione della richiesta, usa il contenuto della JSP per generare una pagina HTML da inviare al client
 - Java Messaging Service (JMS): È una specifica per un Message Oriented Middleware (MOM) integrato in Jakarta EE, che consente la comunicazione asincrona e disaccoppiata tra diverse applicazioni
 Sono inoltre presenti specifiche per autenticazione, autorizzazione e gestione della posta elettronica, fornendo un set completo di strumenti per lo sviluppo di applicazioni aziendali
 #### Beans

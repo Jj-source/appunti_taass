@@ -14,6 +14,8 @@ Un primo esempio fondamentale di middleware è la **Remote Procedure Call (RPC)*
 > Un ambiente di sviluppo compila questa descrizione e genera due componenti di codice: uno **stub client** (che sul client *simula la funzione remota e contiene le chiamate al server*) e uno **stub server** (che *sul server riceve le richieste e invoca la funzione locale*).
 > I dati vengono trasferiti tra client e server attraverso processi di marshalling (mantenere la struttura complessa dei dati, inclusi i riferimenti) e serializzazione (tradurre i dati in un formato trasmissibile in rete).
 > Al momento dell'invocazione, avvengono diverse fasi: il binding (individuazione del server), il marshalling e la serializzazione dei parametri, l'invio della richiesta, la ricezione, l'unmarshalling e la deserializzazione sul server, l'esecuzione della funzione, e il processo inverso per la restituzione del risultato
+****
+![[rpc.png]]
 
 *La RPC rappresenta la base concettuale per molti altri middleware*
 
@@ -22,7 +24,7 @@ Un'evoluzione della RPC è il **TP monitor (Transaction Processing monitor)**
 > [!definizione] TP Monitor
 > Estende le funzionalità della RPC *garantendo proprietà transazionali ACID (Atomicity, Consistency, Isolation, Durability)* alle chiamate remote.
 > Interposizione tra l'applicazione client e le risorse (dati o server), offrendo *procedure di accesso transazionale e meccanismi di rollback* in caso di fallimento.
-> Oltre alla transazionalità, il TP monitor offre servizi di affidabilità (tramite replica dei servizi su più server), bilanciamento del carico (distribuzione delle richieste tra server), funneling (gestione del flusso di richieste per evitare sovraccarichi), e connection pooling (condivisione di risorse tra più client)
+> Oltre alla transazionalità, il TP monitor offre servizi di *affidabilità (tramite replica dei servizi su più server), bilanciamento del carico (distribuzione delle richieste tra server), funneling (gestione del flusso di richieste per evitare sovraccarichi), e connection pooling (condivisione di risorse tra più client)*
 > Per implementare la transazionalità distribuita, un TP monitor può utilizzare meccanismi come il two-phase commit (2PC), che prevede una fase di preparazione e una fase di commit per garantire che una transazione su più database avvenga in modo atomico (o tutto o niente)
 
 > [!abstract] 2-phase commit
@@ -63,11 +65,14 @@ Con i MOM, si introduce il concetto di *tecnologie push*, dove *il gestore dei m
 
 Un message broker può, ad esempio, *trasformare i messaggi (cambiare formato dati o protocollo), effettuare il rerouting* dei messaggi (dirigerli verso canali diversi in base al contenuto), e *garantire la persistenza* dei messaggi, aumentando l'affidabilità e prevenendo la perdita di dati.
 
+![[middleware_comunica.png]]
+
 L'evoluzione dei modi di comunicazione tra applicazioni, da sistemi più accoppiati (tightly coupled) a quelli meno accoppiati (loosely coupled).
 
 - Conversational: Scambi di informazioni con *sequenze hardcoded* all'interno dei programmi, con una perfetta sincronizzazione per l'intero scambio
   
 - Request/Reply: *Scambio sincrono e hardcoded, ma costituito da una singola richiesta e una singola risposta*.
+  
   > [!warning] 
   > Anche se le richieste HTTP sono asincrone dal punto di vista del trasporto, a livello concettuale spesso implementano un modello request/reply.
   

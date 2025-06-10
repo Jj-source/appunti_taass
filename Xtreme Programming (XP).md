@@ -1,6 +1,6 @@
 2025-02-27 14:19
 
-Status: #baby 
+Status: #adult
 
 Tags: [[Programmazione Agile]] [[SAS]]
 # Xtreme Programming (XP)
@@ -15,6 +15,9 @@ Extreme Programming (XP) è una *metodologia agile di sviluppo software* che enf
 4. **Coraggio** – Essere pronti a modificare il codice senza paura, grazie ai test automatizzati.
 5. **Rispetto** – Collaborazione e fiducia reciproca tra i membri del team.
 ### Pratiche principali
+
+> “Analizzare un poco, progettare un poco, codificare un poco, testare un poco”
+
 - **Sviluppo iterativo e incrementale** – Rilasci frequenti di nuove funzionalità in brevi cicli di sviluppo.
 - **Test-Driven Development (TDD)** [^1] – Scrivere i test prima del codice per garantire qualità e manutenibilità.
 - **Pair Programming** – Due sviluppatori lavorano insieme sulla stessa porzione di codice per ridurre errori e migliorare la progettazione.
@@ -45,6 +48,9 @@ Extreme Programming (XP) segue un ciclo di sviluppo iterativo e incrementale, or
 Esempio:
 
 > Come cliente, voglio poter recuperare la mia password in modo da accedere al mio account anche se la dimentico.
+
+> [!importante]
+> non scendere troppo nel dettaglio iniziale (evitare overcommitment) perché i requisiti possono cambiare nel corso del tempo
 
 - **Assegnazione delle priorità**: Il cliente decide quali storie sono più importanti.
 - **Stima dello sforzo**: Il team stima il tempo necessario per implementare ogni storia utente.

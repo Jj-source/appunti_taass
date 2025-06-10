@@ -178,7 +178,7 @@ Questo permette a **due container diversi** eseguiti dalla stessa immagine di av
 #### Persistenza dei Dati: Copy on Write vs. Volumi
 *Le modifiche scritte sullo strato Copy on Write **persistono** se il container viene fermato e poi fatto ripartire* (stop and play). L'applicazione riprende da dove l'aveva lasciata, e il file di log (usato come esempio) rimane. Tuttavia, *se il container viene rimosso e rieseguito da zero* (anche dalla stessa immagine), *lo strato Copy on Write viene **eliminato e ricreato vuoto***. Pertanto,
 ###### *i dati scritti solo sullo strato CoW non persistono oltre la vita del container*
-#### VOLUMI
+#### Volumi
 Un volume Docker è essenzialmente una *cartella sul file system dell'host* (la macchina su cui gira Docker) che viene *montata* all'interno del file system del container.
 - Il contenuto del volume è gestito dall'host e *non è sotto il controllo diretto di Docker*. Docker si limita a "montare" quella cartella nel container.
 - Quando un container viene rimosso, il volume *non viene cancellato.
